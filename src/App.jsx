@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { getProduct } from "./api";
-import { data } from "autoprefixer";
-// import { data } from "autoprefixer";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -12,8 +10,6 @@ const App = () => {
       setProducts(data);
     });
   }, []);
-
-  // console.log(products);
 
   const ListProduct = () => {
     return products.map((data, i) => {
@@ -28,7 +24,7 @@ const App = () => {
             alt="img"
             className="h-40 m-auto"
           />
-          <div className="text-start text-sm py-2 px-5">{data.description}</div>
+          <div className="text-start text-sm py-2 px-5">{data.description.substring(0, 200)}</div>
           <div>{data.price.toLocaleString("id-ID", { style: "currency", currency: "USD" })}</div>
         </div>
       );
